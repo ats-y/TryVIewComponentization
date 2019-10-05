@@ -4,14 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TryContextMenu.MainPage">
-
+             x:Class="TryContextMenu.MainPage"
+             x:Name="MainPageContentPage">
     <StackLayout>
-
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
 
         <!-- 社員一覧 -->
         <ListView x:Name="EmployeeListView"
@@ -25,9 +20,16 @@
 
                         <!-- コンテキストメニューの定義-->
                         <ViewCell.ContextActions>
+
+                            <!--
+                            削除コンテキストメニュー
+                            Command属性：タップするとMainPageContentPageのDeleteCommandを呼び出す。
+                            CommandParameter属性：Command属性で指定したコマンドに渡すデータを指定。-->
                             <MenuItem Text="削除"
                                       IsDestructive="True"
-                                      Clicked="OnDeleteMenuClicked" />
+                                      Command="{Binding Source={x:Reference MainPageContentPage}, Path=BindingContext.DeleteCommand}"
+                                      CommandParameter="{Binding .}" />
+
                         </ViewCell.ContextActions>
 
                         <!-- レイアウト定義 -->
@@ -42,9 +44,11 @@
                             </StackLayout>
 
                         </StackLayout>
+
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+
         </ListView>
 
     </StackLayout>

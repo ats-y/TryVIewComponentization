@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Windows.Input;
 using TryContextMenu.Models;
+using Xamarin.Forms;
 
 namespace TryContextMenu.ViewModels
 {
@@ -9,12 +13,12 @@ namespace TryContextMenu.ViewModels
         /// <summary>
         /// 社員リスト
         /// </summary>
-        private List<Employee> _employeeList;
+        private ObservableCollection<Employee> _employeeList;
 
         /// <summary>
         /// 社員リストプロパティ
         /// </summary>
-        public List<Employee> EmployeeList
+        public ObservableCollection<Employee> EmployeeList
         {
             get { return _employeeList; }
             set { SetProperty(ref _employeeList, value); }
@@ -26,7 +30,7 @@ namespace TryContextMenu.ViewModels
         public MainPageViewModel()
         {
             // 社員リストを生成する。
-            _employeeList = new List<Employee>
+            _employeeList = new ObservableCollection<Employee>
             {
                 new Employee { FullName = "社員 太郎" },
                 new Employee { FullName = "社員 二郎" },
@@ -34,9 +38,17 @@ namespace TryContextMenu.ViewModels
                 new Employee { FullName = "社員 四郎" },
                 new Employee { FullName = "社員 五郎" },
             };
-
         }
 
+        /// <summary>
+        /// 社員リストから引数で指定した社員を削除する。
+        /// </summary>
+        public ICommand DeleteCommand =>
+            new Command<Employee>((arg) =>
+        {
+            Debug.WriteLine("MainPage.DeleteCommand()");
 
+            EmployeeList.Remove(arg);
+        });
     }
 }
