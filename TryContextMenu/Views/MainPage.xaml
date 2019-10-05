@@ -22,6 +22,15 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+
+                        <!-- コンテキストメニューの定義-->
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="削除"
+                                      IsDestructive="True"
+                                      Clicked="OnDeleteMenuClicked" />
+                        </ViewCell.ContextActions>
+
+                        <!-- レイアウト定義 -->
                         <StackLayout Padding="10,100,0,100"
                                      BackgroundColor="{Binding BackColor}"
                                      HorizontalOptions="FillAndExpand"
