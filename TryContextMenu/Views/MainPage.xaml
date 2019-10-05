@@ -5,11 +5,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TryContextMenu.MainPage">
+
     <StackLayout>
+
         <!-- Place new controls here -->
         <Label Text="Welcome to Xamarin.Forms!"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand" />
+
+        <!-- 社員一覧 -->
+        <ListView x:Name="EmployeeListView"
+                  ItemsSource="{Binding EmployeeList}"
+                  HasUnevenRows="True">
+
+            <!-- 社員行 -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10,100,0,100"
+                                     BackgroundColor="{Binding BackColor}"
+                                     HorizontalOptions="FillAndExpand"
+                                     Orientation="Horizontal">
+
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="名前：" />
+                                <Label Text="{Binding FullName}" />
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </StackLayout>
 </ContentPage>
