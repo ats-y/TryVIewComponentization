@@ -13,8 +13,8 @@ namespace TryContextMenu.Views
             InitializeComponent();
         }
 
-        ActionEvent _myValue;
-        public ActionEvent MyValue
+        List<ActionEvent> _myValue;
+        public List<ActionEvent> MyValue
         {
             get { return _myValue; }
             set
@@ -22,24 +22,29 @@ namespace TryContextMenu.Views
                 Debug.WriteLine("MyVlaue set property");
                 _myValue = value;
 
-                HistoryArea.Children.Add(
-                    new Label
-                    {
-                        Text = MyValue.Content,
-                    });
+                if (_myValue == null) return;
+                foreach(ActionEvent ae in _myValue)
+                {
+                    HistoryArea.Children.Add(
+                        new Label
+                        {
+                            Text = ae.Content,
+                            BackgroundColor = Color.Aqua,
+                        });
+                }
             }
         }
 
         public static readonly BindableProperty MyValueProperty =
             BindableProperty.Create(
                 nameof(MyValue),
-                typeof(ActionEvent),
+                typeof(List<ActionEvent>),
                 typeof(EmployeeSafetyView),
                 null,
                 propertyChanged: (bindblable, oldValue, newValue) =>
                 {
                     Debug.WriteLine("MyValueProperty Property Changed!");
-                    ((EmployeeSafetyView)bindblable).MyValue = (ActionEvent)newValue;
+                    ((EmployeeSafetyView)bindblable).MyValue = (List<ActionEvent>)newValue;
                 },
                 defaultBindingMode: BindingMode.TwoWay
             );

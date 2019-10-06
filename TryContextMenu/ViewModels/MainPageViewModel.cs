@@ -32,13 +32,6 @@ namespace TryContextMenu.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private ActionEvent _myValue;
-        public ActionEvent MyValue
-        {
-            get { return _myValue; }
-            set { SetProperty(ref _myValue, value); }
-        }
-
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -46,16 +39,23 @@ namespace TryContextMenu.ViewModels
         {
             Title = "aaa";
 
-            MyValue = new ActionEvent
-            {
-                Time = DateTime.Now,
-                Content = "1こめ",
-            };
-
             // 社員リストを生成する。
             _employeeList = new ObservableCollection<Employee>
             {
-                new Employee { FullName = "社員 太郎" },
+                new Employee {
+                    FullName = "社員 太郎",
+                    MyValue = new List<ActionEvent>{
+                        new ActionEvent
+                        {
+                            Time = DateTime.Now,
+                            Content = "1こめ123456789012345678901234567890123456789012345678901234567890",
+                        },
+                        new ActionEvent
+                        {
+                            Time = DateTime.Now,
+                            Content = "2こめ",
+                        } },
+                    },
                 new Employee { FullName = "社員 二郎" },
                 new Employee { FullName = "社員 三郎" },
                 new Employee { FullName = "社員 四郎" },

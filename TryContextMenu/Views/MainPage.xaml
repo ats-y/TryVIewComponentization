@@ -9,9 +9,9 @@
              x:Name="MainPageContentPage">
     <StackLayout>
 
-        <views:EmployeeSafetyView
+        <!--<views:EmployeeSafetyView
             MyValue="{Binding MyValue}"
-            x:Name="MyParts"/>
+            x:Name="MyParts"/>-->
 
         <!-- 社員一覧 -->
         <ListView x:Name="EmployeeListView"
@@ -38,14 +38,19 @@
                         </ViewCell.ContextActions>
 
                         <!-- レイアウト定義 -->
-                        <StackLayout Padding="10,100,0,100"
-                                     BackgroundColor="{Binding BackColor}"
+                        <StackLayout BackgroundColor="{Binding BackColor}"
                                      HorizontalOptions="FillAndExpand"
-                                     Orientation="Horizontal">
+                                     Orientation="Horizontal"
+                                     Margin="20">
 
                             <StackLayout Orientation="Vertical">
                                 <Label Text="名前：" />
                                 <Label Text="{Binding FullName}" />
+
+                                <views:EmployeeSafetyView Margin="10"
+                                                          MyValue="{Binding MyValue}"
+                                                          x:Name="MyParts" />
+
                             </StackLayout>
 
                         </StackLayout>
