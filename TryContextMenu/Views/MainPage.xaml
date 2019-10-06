@@ -43,12 +43,14 @@
                                      Orientation="Horizontal"
                                      Margin="20">
 
-                            <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Vertical"
+                                         HorizontalOptions="FillAndExpand">
                                 <Label Text="名前：" />
                                 <Label Text="{Binding FullName}" />
 
+                                <!-- 行動履歴の一覧を表示する自作View -->
                                 <views:EmployeeSafetyView Margin="10"
-                                                          MyValue="{Binding MyValue}"
+                                                          ActionHistoryList="{Binding ActionHistoryList}"
                                                           x:Name="MyParts" />
 
                             </StackLayout>

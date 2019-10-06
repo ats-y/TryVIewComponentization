@@ -16,6 +16,8 @@ namespace TryContextMenu.Models
         /// </summary>
         public string Content { get; set; }
 
+        public bool IsActive { get; set; } = false;
+
         public ActionEvent()
         {
         }

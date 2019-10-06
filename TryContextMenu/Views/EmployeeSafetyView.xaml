@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+行動履歴の一覧を表示する自作View。
+バインディング可能なActionHistoryListプロパティ付き。
+（コードビハインドに定義）
+-->
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TryContextMenu.Views.EmployeeSafetyView">
     <ContentView.Content>
-        <StackLayout Orientation="Vertical">
-            <Label Text="名前" FontSize="Small"/>
-            <Label Text="{Binding Title}"/>
 
+        <StackLayout Orientation="Vertical">
+            <Label Text="行動履歴" FontSize="Small"/>
+
+            <!-- 行動履歴リストを表示するエリア -->
             <StackLayout x:Name="HistoryArea"
                          Orientation="Vertical">
 

@@ -42,22 +42,37 @@ namespace TryContextMenu.ViewModels
             // 社員リストを生成する。
             _employeeList = new ObservableCollection<Employee>
             {
-                new Employee {
+                new Employee
+                {
                     FullName = "社員 太郎",
-                    MyValue = new List<ActionEvent>{
+                    ActionHistoryList = new List<ActionEvent>{
                         new ActionEvent
                         {
                             Time = DateTime.Now,
-                            Content = "1こめ123456789012345678901234567890123456789012345678901234567890",
+                            Content = "出社",
                         },
                         new ActionEvent
                         {
                             Time = DateTime.Now,
-                            Content = "2こめ",
+                            Content = "外出",
                         } },
-                    },
+                },
                 new Employee { FullName = "社員 二郎" },
-                new Employee { FullName = "社員 三郎" },
+                new Employee
+                {
+                    FullName = "社員 三郎",
+                    ActionHistoryList = new List<ActionEvent>{
+                        new ActionEvent
+                        {
+                            Time = DateTime.Now,
+                            Content = "出社",
+                        },
+                        new ActionEvent
+                        {
+                            Time = DateTime.Now,
+                            Content = "帰宅",
+                        } },
+                },
                 new Employee { FullName = "社員 四郎" },
                 new Employee { FullName = "社員 五郎" },
             };

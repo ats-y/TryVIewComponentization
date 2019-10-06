@@ -17,7 +17,10 @@ namespace TryContextMenu.Models
         /// </summary>
         public string FullName { get; set; }
 
-        public List<ActionEvent> MyValue { get; set; }
+        /// <summary>
+        /// 行動履歴。
+        /// </summary>
+        public List<ActionEvent> ActionHistoryList { get; set; }
 
 
     }
