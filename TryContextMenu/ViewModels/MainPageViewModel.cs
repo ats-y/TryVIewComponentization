@@ -24,11 +24,34 @@ namespace TryContextMenu.ViewModels
             set { SetProperty(ref _employeeList, value); }
         }
 
+        private string _title;
+
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
+        private ActionEvent _myValue;
+        public ActionEvent MyValue
+        {
+            get { return _myValue; }
+            set { SetProperty(ref _myValue, value); }
+        }
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public MainPageViewModel()
         {
+            Title = "aaa";
+
+            MyValue = new ActionEvent
+            {
+                Time = DateTime.Now,
+                Content = "1こめ",
+            };
+
             // 社員リストを生成する。
             _employeeList = new ObservableCollection<Employee>
             {
